@@ -1,0 +1,56 @@
+﻿@model TABGra.Models.Gildia
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Gildia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.poziom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.poziom)
+        </dd>
+      
+        <dt>
+    @Html.ActionLink("Gracze", "GraczeGildii", "Graczs", new { id = Model.id }, null)
+</dt>
+
+<dd>
+</dd>
+        <dt>
+            @Html.ActionLink("Umiejętności", "UmiejetnosciGildii", "Umiejetnoscis", new { id = Model.id }, null)
+        </dt>
+
+        <dd>
+            @foreach (var ek in Model.umiejetnosci)
+            {
+
+                <p>
+                    @ek.specyfikacja
+                </p>
+            }
+            <p>@Html.ActionLink("Dodaj Umiejętność", "AddUmiejetnosci", "Gildias", new { id = Model.id }, new { @class = "btn btn-default" })</p>
+            <p>@Html.ActionLink("Usun Umiejętność", "DeleteUmiejetnosci", "Gildias", new { id = Model.id }, new { @class = "btn btn-default" })</p>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

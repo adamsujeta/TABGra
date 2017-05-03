@@ -1,0 +1,124 @@
+﻿@model TABGra.Models.Gracz
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Gracz</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doswiadczenie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doswiadczenie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.zycia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.zycia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.poziom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.poziom)
+        </dd>
+        <dt>
+            @Html.ActionLink("Serwer", "Details", "Serwers", new { id = Model.serwer.id }, null)
+        </dt>
+
+        <dd>
+            @Html.DisplayName(Model.serwer.nazwa)
+        </dd>
+        @{if (Model.gildia != null)
+            {
+                <dt>
+                    @Html.ActionLink("Gildia", "Details", "Gildias", new { id = Model.gildia.id }, null)
+                </dt>
+
+                <dd>
+                    @Html.DisplayName(Model.gildia.nazwa)
+                </dd>
+
+            }
+        }
+        <dt>
+            @Html.ActionLink("Ekwipunek", "EkwipunekGracz", "Ekwipuneks", new { id = Model.id }, null)
+        </dt>
+
+        <dd>
+            @foreach (var ek in Model.ekwipunek)
+            {
+
+                <p>
+                    @ek.opis
+                </p>
+            }
+            <p>@Html.ActionLink("Dodaj Ekiwpunek", "AddEkwipunek", "Graczs", new { id = Model.id }, new { @class = "btn btn-default" })</p>
+            <p>@Html.ActionLink("Usun Ekiwpunek", "DeleteEkwipunek", "Graczs", new { id = Model.id }, new { @class = "btn btn-default" })</p>
+        </dd>
+
+
+        <dt>
+            @Html.ActionLink("Zadania", "ZadanieGracza", "Zadanies", new { id = Model.id }, null)
+        </dt>
+
+        <dd>
+            @foreach (var ek in Model.zadania)
+            {
+
+                <p>
+                    @ek.opis
+                </p>
+            }
+            <p>@Html.ActionLink("Dodaj Zadanie", "AddZadanie", "Graczs", new { id = Model.id }, new { @class = "btn btn-default" })</p>
+            <p>@Html.ActionLink("Usun Zadanie", "DeleteZadanie", "Graczs", new { id = Model.id }, new { @class = "btn btn-default" })</p>
+        </dd>
+        <dt>
+            @Html.ActionLink("Umiejętności", "UmiejetnosciGracza", "Umiejetnoscis", new { id = Model.id }, null)
+        </dt>
+
+        <dd>
+            @foreach (var ek in Model.umiejetnosci)
+            {
+
+                <p>
+                    @ek.specyfikacja
+                </p>
+            }
+            <p>@Html.ActionLink("Dodaj Umiejętność", "AddUmiejetnosci", "Graczs", new { id = Model.id }, new { @class = "btn btn-default" })</p>
+            <p>@Html.ActionLink("Usun Umiejętność", "DeleteUmiejetnosci", "Graczs", new { id = Model.id }, new { @class = "btn btn-default" })</p>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

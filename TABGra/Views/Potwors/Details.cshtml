@@ -1,0 +1,58 @@
+﻿@model TABGra.Models.Potwor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Potwor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doswiadczenie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doswiadczenie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.przedmioty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.przedmioty)
+        </dd>
+
+        <dt>
+            @Html.ActionLink("Ekwipunek", "EkwipunekPotwor", "Ekwipuneks", new { id = Model.id }, null)
+        </dt>
+
+        <dd>
+            @foreach(var ek in Model.ekwipunek){
+                
+                <p>
+                    @ek.opis
+                </p>
+            }
+            <p>@Html.ActionLink("Dodaj Ekiwpunek", "AddEkwipunek", "Potwors", new { id = Model.id }, new { @class = "btn btn-default" })</p> 
+            <p>@Html.ActionLink("Usun Ekiwpunek", "DeleteEkwipunek", "Potwors", new { id = Model.id }, new { @class = "btn btn-default" })</p> 
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

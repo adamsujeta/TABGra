@@ -1,0 +1,48 @@
+﻿@model TABGra.Models.Zadanie
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Szczegóły</h2>
+
+<div>
+    <h4>Zadanie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nagroda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nagroda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NPC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NPC)
+        </dd>
+        <dt>
+            @Html.ActionLink("Gracze", "GraczeZadanie", "Graczs", new { id = Model.id }, null)
+        </dt>
+
+        <dd>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
